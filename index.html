@@ -3,81 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Interview Answer Builder | Own The Firefighter Interview</title>
+    <title>The Interview Answer Builder</title>
     <style>
-        /* --- Drake Scoggins Thematic Styling --- */
-
-        /* Basic Reset & Body Styling */
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #f0f2f5; /* Light gray background for contrast */
+            background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
             margin: 0;
             padding: 20px;
         }
-
-        /* Main Container for the Worksheet */
-        .container {
+        .playbook-container {
             max-width: 800px;
             margin: 20px auto;
             background-color: #ffffff;
-            padding: 30px 40px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-top: 5px solid #a02c2c; /* Strong, dark red accent */
+            overflow: hidden; 
         }
-
-        /* Typography */
-        h1, h2, h3 {
-            font-family: 'Georgia', serif;
-            color: #1a1a1a;
-            margin-top: 0;
-        }
-
-        h1 {
-            font-size: 2.5em;
+        .main-header {
+            padding: 20px 40px;
+            background-color: #1a1a1a;
+            color: white;
             text-align: center;
-            color: #a02c2c;
-            margin-bottom: 10px;
+        }
+        .main-header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 2.2em;
+            margin: 0;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        h2 {
-            font-size: 1.8em;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+        .main-header p {
+            font-style: italic;
+            color: #ccc;
+            margin: 5px 0 0 0;
         }
-        
-        h3 {
-            font-size: 1.2em;
+        .tab-buttons {
+            display: flex;
+            background-color: #333;
+        }
+        .tab-button {
+            flex-grow: 1;
+            padding: 15px 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #333;
+            color: white;
+            font-size: 1em;
             font-weight: bold;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .instructions {
+            transition: background-color 0.3s;
             text-align: center;
+            border-right: 1px solid #555;
+        }
+        .tab-button:last-child {
+            border-right: none;
+        }
+        .tab-button:hover {
+            background-color: #555;
+        }
+        .tab-button.active {
+            background-color: #a02c2c; /* Drake Scoggins Red */
+        }
+        .tab-content {
+            display: none;
+            padding: 30px 40px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .instruction-text {
             font-style: italic;
             color: #666;
-            margin-bottom: 30px;
-        }
-
-        /* Form Elements */
-        .form-group {
             margin-bottom: 25px;
+            border-left: 3px solid #eee;
+            padding-left: 15px;
         }
-        
+        .form-step {
+            margin-bottom: 20px;
+        }
         label {
             display: block;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-family: 'Georgia', serif;
         }
-
         input[type="text"],
         textarea {
             width: 100%;
@@ -86,136 +97,158 @@
             border-radius: 4px;
             font-size: 1em;
             font-family: 'Lato', sans-serif;
-            box-sizing: border-box; /* Important for padding and width */
+            box-sizing: border-box;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
-
         input[type="text"]:focus,
         textarea:focus {
             border-color: #a02c2c;
             box-shadow: 0 0 5px rgba(160, 44, 44, 0.3);
             outline: none;
         }
-
         textarea {
-            min-height: 100px;
+            min-height: 80px;
             resize: vertical;
         }
-
-        #finalAnswer {
-            min-height: 200px;
+        .final-answer-box {
+            margin-top: 30px;
         }
-
-        /* Print Button Styling */
-        .print-button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #a02c2c; /* Dark red */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            text-transform: uppercase;
-            cursor: pointer;
-            margin-top: 40px;
-            transition: background-color 0.3s;
+        .final-answer-box textarea {
+            min-height: 150px;
+            background-color: #fdfaee;
+            border-color: #e0d6b3;
         }
-
-        .print-button:hover {
-            background-color: #802222; /* Darker red on hover */
-        }
-        
-        /* Footer */
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 20px;
+            padding-bottom: 20px;
             font-size: 0.9em;
             color: #888;
         }
-
-        /* Print-specific styles */
         @media print {
-            body {
-                background-color: #fff;
-                padding: 0;
-            }
-            .container {
-                box-shadow: none;
-                border-top: none;
-                padding: 0;
-                margin: 0;
-                max-width: 100%;
-            }
-            .print-button, .instructions {
-                display: none;
-            }
-            h1 {
-                font-size: 24pt;
-                color: black;
-            }
-            h2 {
-                 font-size: 18pt;
-                 color: black;
-                 border-bottom: 2px solid #333;
-            }
+            body { background: #fff; }
+            .main-header, .tab-buttons, footer { display: none; }
+            .playbook-container { box-shadow: none; }
+            .tab-content { display: block !important; padding: 0; }
         }
     </style>
-    <!-- Google Fonts for professional typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <h1>THE INTERVIEW ANSWER BUILDER</h1>
-        <p class="instructions">Use this 1-page blueprint for EVERY question about your experience. Print a copy for each story you need to prepare.</p>
-
-        <div class="form-group">
-            <label for="question">QUESTION I AM PREPARING FOR:</label>
-            <input type="text" id="question" name="question" placeholder="e.g.So, tell us about yourself">
-        </div>
-        
-        <h2>STEP 1: DRAFT YOUR KEY POINTS</h2>
-        <p>Break down your story into these 4 essential parts. Use bullet points or short notes.</p>
-
-        <div class="form-group">
-            <h3>THE SITUATION (Context):</h3>
-            <textarea placeholder="Where were you? What was happening? (1-2 sentences)"></textarea>
+    <div class="playbook-container">
+        <div class="main-header">
+            <h1>THE INTERVIEW ANSWER BUILDER</h1>
+            <p>A Tactical Tool by Drake Scoggins</p>
         </div>
 
-        <div class="form-group">
-            <h3>THE CHALLENGE (Obstacle):</h3>
-            <textarea placeholder="What was the specific problem?"></textarea>
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="openTab(event, 'PitchBuilder')">"Tell Me About Yourself"</button>
+            <button class="tab-button" onclick="openTab(event, 'StoryBuilder')">Behavioral Story (C.O.A.L.)</button>
+            <button class="tab-button" onclick="openTab(event, 'DirectBuilder')">Direct Question</button>
         </div>
 
-        <div class="form-group">
-            <h3>MY ACTION (What I did):</h3>
-            <textarea placeholder="What were the exact steps YOU took? (Use the I statements)"></textarea>
+        <!-- Tab 1: "Tell Me About Yourself" Pitch Builder -->
+        <div id="PitchBuilder" class="tab-content active">
+            <p class="instruction-text">Use this framework to build your powerful, 90-second opening statement.</p>
+            <div class="form-step">
+                <label>STEP 1: THE PRESENT (Who you are now - 15 sec):</label>
+                <textarea placeholder="Your current professional role & focus."></textarea>
+            </div>
+            <div class="form-step">
+                <label>STEP 2: THE PAST (Your bridge to firefighting - 45 sec):</label>
+                <textarea placeholder="Connect 2-3 key skills from your experience directly to the fire service."></textarea>
+            </div>
+            <div class="form-step">
+                <label>STEP 3: THE FUTURE (Your "Why" statement - 15 sec):</label>
+                <textarea placeholder="Your powerful, final statement of purpose."></textarea>
+            </div>
+            <div class="form-step final-answer-box">
+                <label>YOUR FINAL PITCH:</label>
+                <textarea placeholder="Combine the points above into your final, confident answer. Practice it out loud."></textarea>
+            </div>
         </div>
 
-        <div class="form-group">
-            <h3>THE LESSON (The "So What?"):</h3>
-            <textarea placeholder="What did you learn & how does it apply to firefighting?"></textarea>
+        <!-- Tab 2: Behavioral Story Builder (C.O.A.L.) -->
+        <div id="StoryBuilder" class="tab-content">
+            <p class="instruction-text">Use this for questions that start with "Tell me about a time you..." (e.g., handled stress, had a conflict).</p>
+            <div class="form-step">
+                <label>THE QUESTION I'M ANSWERING:</label>
+                <input type="text" placeholder="e.g., Tell me about a time you worked on a team.">
+            </div>
+            <div class="form-step">
+                <label>STEP 1: CONTEXT (The Situation):</label>
+                <textarea placeholder="Where & When? (1-2 sentences)"></textarea>
+            </div>
+            <div class="form-step">
+                <label>STEP 2: OBSTACLE (The Challenge):</label>
+                <textarea placeholder="What was the specific problem?"></textarea>
+            </div>
+            <div class="form-step">
+                <label>STEP 3: ACTION (What You Did):</label>
+                <textarea placeholder="What specific steps did YOU take? Use 'I' statements."></textarea>
+            </div>
+            <div class="form-step">
+                <label>STEP 4: LESSON (The "So What?"):</label>
+                <textarea placeholder="What did you learn? How does it apply to firefighting?"></textarea>
+            </div>
+            <div class="form-step final-answer-box">
+                <label>YOUR FINAL STORY:</label>
+                <textarea placeholder="Combine the points above into your final, structured story."></textarea>
+            </div>
         </div>
 
-        <h2>STEP 2: BUILD YOUR WINNING ANSWER</h2>
-        <p>Now, connect your key points from Step 1 into a single, powerful answer. Write it out exactly as you would say it.</p>
-
-        <div class="form-group">
-            <textarea id="finalAnswer" placeholder="Combine your notes here into a fluid, confident answer..."></textarea>
+        <!-- Tab 3: Direct Question Builder -->
+        <div id="DirectBuilder" class="tab-content">
+            <p class="instruction-text">Use this for questions like "What is your greatest weakness?" or "What does integrity mean to you?"</p>
+            <div class="form-step">
+                <label>THE QUESTION I'M ANSWERING:</label>
+                <input type="text" placeholder="e.g., What is your greatest weakness?">
+            </div>
+            <div class="form-step">
+                <label>STEP 1: THE DIRECT ANSWER (The Core Statement):</label>
+                <textarea placeholder="State your answer clearly and directly in one powerful sentence."></textarea>
+            </div>
+            <div class="form-step">
+                <label>STEP 2: THE PROOF (The Evidence or Example):</label>
+                <textarea placeholder="Provide a brief, concrete example or explanation to back up your statement."></textarea>
+            </div>
+            <div class="form-step">
+                <label>STEP 3: THE CONNECTION (The "So What?"):</label>
+                <textarea placeholder="Briefly connect your answer back to the core values of the fire service."></textarea>
+            </div>
+            <div class="form-step final-answer-box">
+                <label>YOUR FINAL ANSWER:</label>
+                <textarea placeholder="Combine the points above into a concise, professional answer."></textarea>
+            </div>
         </div>
-        
-        <button class="print-button" onclick="window.print()">Print This Worksheet</button>
-
     </div>
-
+    
     <footer>
-        <p>From the book: Own The Firefighter Interview | A Tool by Drake Scoggins</p>
+        <p>From the playbook: Own The Firefighter Interview</p>
     </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        // Set the first tab to be active on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.tab-button').click();
+        });
+    </script>
 
 </body>
 </html>
