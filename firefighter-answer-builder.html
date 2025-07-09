@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Interview Answer Builder | Own The Firefighter Interview</title>
+    <style>
+        /* --- Drake Scoggins Thematic Styling --- */
+
+        /* Basic Reset & Body Styling */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0f2f5; /* Light gray background for contrast */
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Main Container for the Worksheet */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #a02c2c; /* Strong, dark red accent */
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Georgia', serif;
+            color: #1a1a1a;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: #a02c2c;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .instructions {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: 'Lato', sans-serif;
+            box-sizing: border-box; /* Important for padding and width */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #a02c2c;
+            box-shadow: 0 0 5px rgba(160, 44, 44, 0.3);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        #finalAnswer {
+            min-height: 200px;
+        }
+
+        /* Print Button Styling */
+        .print-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #a02c2c; /* Dark red */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: background-color 0.3s;
+        }
+
+        .print-button:hover {
+            background-color: #802222; /* Darker red on hover */
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-top: none;
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+            .print-button, .instructions {
+                display: none;
+            }
+            h1 {
+                font-size: 24pt;
+                color: black;
+            }
+            h2 {
+                 font-size: 18pt;
+                 color: black;
+                 border-bottom: 2px solid #333;
+            }
+        }
+    </style>
+    <!-- Google Fonts for professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <h1>THE INTERVIEW ANSWER BUILDER</h1>
+        <p class="instructions">Use this 1-page blueprint for EVERY question about your experience. Print a copy for each story you need to prepare.</p>
+
+        <div class="form-group">
+            <label for="question">QUESTION I AM PREPARING FOR:</label>
+            <input type="text" id="question" name="question" placeholder="e.g., "Tell me about a time you handled stress."">
+        </div>
+        
+        <h2>STEP 1: DRAFT YOUR KEY POINTS</h2>
+        <p>Break down your story into these 4 essential parts. Use bullet points or short notes.</p>
+
+        <div class="form-group">
+            <h3>THE SITUATION (Context):</h3>
+            <textarea placeholder="Where were you? What was happening? (1-2 sentences)"></textarea>
+        </div>
+
+        <div class="form-group">
+            <h3>THE CHALLENGE (Obstacle):</h3>
+            <textarea placeholder="What was the specific problem?"></textarea>
+        </div>
+
+        <div class="form-group">
+            <h3>MY ACTION (What I did):</h3>
+            <textarea placeholder="What were the exact steps YOU took? (Use the I statements)"></textarea>
+        </div>
+
+        <div class="form-group">
+            <h3>THE LESSON (The "So What?"):</h3>
+            <textarea placeholder="What did you learn & how does it apply to firefighting?"></textarea>
+        </div>
+
+        <h2>STEP 2: BUILD YOUR WINNING ANSWER</h2>
+        <p>Now, connect your key points from Step 1 into a single, powerful answer. Write it out exactly as you would say it.</p>
+
+        <div class="form-group">
+            <textarea id="finalAnswer" placeholder="Combine your notes here into a fluid, confident answer..."></textarea>
+        </div>
+        
+        <button class="print-button" onclick="window.print()">Print This Worksheet</button>
+
+    </div>
+
+    <footer>
+        <p>From the book: Own The Firefighter Interview | A Tool by Drake Scoggins</p>
+    </footer>
+
+</body>
+</html>
